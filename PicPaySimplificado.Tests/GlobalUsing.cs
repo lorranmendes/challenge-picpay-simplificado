@@ -1,3 +1,10 @@
 ﻿global using PicPaySimplificado.Domain.Entities;
 global using PicPaySimplificado.Domain.Exceptions;
 global using PicPaySimplificado.Domain.Resources;
+global using PicPaySimplificado.Domain.Enumerators;
+global using PicPaySimplificado.Domain.Interfaces;
+global using PicPaySimplificado.Domain.ValueObjects;
+global using AutoFixture;
+global using Bogus;
+global using Bogus.Extensions.Brazil;
+global using Moq;
