@@ -21,5 +21,7 @@
 
         public void Update(TEntity entity) => 
             context.Set<TEntity>().Update(entity);
+
+        public Task SaveChangesAsync() => context.SaveChangesAsync();
     }
 }

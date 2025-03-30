@@ -2,3 +2,9 @@
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
 global using PicPaySimplificado.Infrastructure.Context;
+global using PicPaySimplificado.Application.Interfaces;
+global using PicPaySimplificado.Application.Services;
+global using PicPaySimplificado.Domain.AutoMapperProfile;
+global using PicPaySimplificado.Domain.Interfaces;
+global using PicPaySimplificado.Infrastructure.UnitOfWork;
+global using PicPaySimplificado.Infrastructure.Repositories;

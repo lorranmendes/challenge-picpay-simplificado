@@ -2,6 +2,7 @@
 {
     public class UserService : IUserService
     {
+        private const decimal InitialBalance = 100.00m;
         private readonly IUnitOfWork unitOfWork;
         public UserService(IUnitOfWork unitOfWork)
         {
@@ -9,9 +10,12 @@
         }
 
         public async Task<Response<int>> AddAsync(User user)
-        {
+        {            
             await ValidateAlreadyUsedFieldsAsync(user);
+            user.Wallet ??= new Wallet(user.Id, InitialBalance);
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             await unitOfWork.UserRepository.AddAsync(user);
+            await unitOfWork.UserRepository.SaveChangesAsync();
             return new Response<int>(user.Id);
         }
 

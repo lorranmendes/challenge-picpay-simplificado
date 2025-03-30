@@ -123,11 +123,20 @@
   <data name="AmountMustBeGreaterThanZero" xml:space="preserve">
     <value>O valor precisa ser maior do que zero.</value>
   </data>
+  <data name="GenericError" xml:space="preserve">
+    <value>Ocorreu um erro inesperado.</value>
+  </data>
   <data name="InsufficientBalance" xml:space="preserve">
     <value>Saldo insuficiente.</value>
   </data>
   <data name="InvalidFormat" xml:space="preserve">
     <value>O formato de {0} está inválido.</value>
+  </data>
+  <data name="InvalidType" xml:space="preserve">
+    <value>{0} é um tipo inválido.</value>
+  </data>
+  <data name="MinimumLengthRequired" xml:space="preserve">
+    <value>{0} deve ter no mínimo {1} caractere(s).</value>
   </data>
   <data name="RequiredField" xml:space="preserve">
     <value>{0} é um campo obrigatório.</value>

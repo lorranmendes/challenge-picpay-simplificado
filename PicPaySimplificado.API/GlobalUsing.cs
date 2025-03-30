@@ -1,1 +1,14 @@
 ﻿global using PicPaySimplificado.Infrastructure.IoC;
+global using PicPaySimplificado.Application.Interfaces;
+global using PicPaySimplificado.API.Endpoints;
+global using PicPaySimplificado.Domain.Entities;
+global using PicPaySimplificado.Domain.DTOs;
+global using PicPaySimplificado.Domain.Validators;
+global using PicPaySimplificado.API.Shared;
+global using PicPaySimplificado.Domain.Exceptions;
+global using PicPaySimplificado.Domain.Resources;
+global using PicPaySimplificado.API.Middleware;
+global using AutoMapper;
+global using Microsoft.AspNetCore.Mvc;
+global using System.Net;
+global using Serilog;
