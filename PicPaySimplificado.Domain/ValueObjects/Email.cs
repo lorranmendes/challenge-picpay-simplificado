@@ -8,7 +8,7 @@
             var emailValidator = new EmailValidator();
             var validation = emailValidator.Validate(address);
             if (!validation.IsValid)
-                throw new InvalidFormatException(validation.Errors.Select(x => x.ErrorMessage).FirstOrDefault());
+                throw new InvalidFormatException(validation.Errors.Select(x => x.ErrorMessage).FirstOrDefault());                
 
             Address = address;
         }

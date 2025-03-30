@@ -61,11 +61,29 @@ namespace PicPaySimplificado.Domain.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} já está em uso..
+        /// </summary>
+        public static string AlreadyUsed {
+            get {
+                return ResourceManager.GetString("AlreadyUsed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a O valor precisa ser maior do que zero..
         /// </summary>
         public static string AmountMustBeGreaterThanZero {
             get {
                 return ResourceManager.GetString("AmountMustBeGreaterThanZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Ocorreu um erro inesperado..
+        /// </summary>
+        public static string GenericError {
+            get {
+                return ResourceManager.GetString("GenericError", resourceCulture);
             }
         }
         
@@ -84,6 +102,24 @@ namespace PicPaySimplificado.Domain.Resources {
         public static string InvalidFormat {
             get {
                 return ResourceManager.GetString("InvalidFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} é um tipo inválido..
+        /// </summary>
+        public static string InvalidType {
+            get {
+                return ResourceManager.GetString("InvalidType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} deve ter no mínimo {1} caractere(s)..
+        /// </summary>
+        public static string MinimumLengthRequired {
+            get {
+                return ResourceManager.GetString("MinimumLengthRequired", resourceCulture);
             }
         }
         

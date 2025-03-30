@@ -12,6 +12,12 @@
                     connectionString, 
                     opt => opt.MigrationsAssembly(typeof(PicPaySimplificadoContext).Assembly.FullName));    
             });
+
+            services.AddAutoMapper(typeof(MapperProfile));
+
+            services.AddScoped<IUnitOfWork, EFUnitOfWork>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
     }
 }
