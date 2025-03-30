@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PicPaySimplificado.Application\PicPaySimplificado.Application.csproj" />
     <ProjectReference Include="..\PicPaySimplificado.Domain\PicPaySimplificado.Domain.csproj" />
   </ItemGroup>
 

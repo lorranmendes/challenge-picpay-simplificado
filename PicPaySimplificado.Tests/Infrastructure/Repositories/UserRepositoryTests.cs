@@ -1,21 +1,19 @@
 ﻿namespace PicPaySimplificado.Tests.Infrastructure.Repositories
 {
-    public class UserRepositoryTests
+    public class UserRepositoryTests : IClassFixture<UserFixture>
     {
-        private readonly Faker faker;
-        private readonly Fixture fixture;
+        private readonly UserFixture userFixture;
         private readonly Mock<IUserRepository> mockUserRepository;
-        public UserRepositoryTests()
+        public UserRepositoryTests(UserFixture userFixture)
         {
-            this.faker = new Faker();
-            this.fixture = new Fixture();
+            this.userFixture = userFixture;
             this.mockUserRepository = new Mock<IUserRepository>();
         }
 
         [Fact]
         public async void AddAsync_WithValidData_ShouldReturnUser()
         {
-            var user = this.GetUser();
+            var user = userFixture.GetUser();
             var userRepository = this.mockUserRepository.Object;
             mockUserRepository.Setup(x => x.AddAsync(It.IsAny<User>())).ReturnsAsync(user);
 
@@ -27,7 +25,7 @@
         [Fact]
         public async void GetByIdAsync_WithValidId_ShouldReturnUser()
         {
-            var user = this.GetUser();
+            var user = userFixture.GetUser();
             user.Id = new Random().Next(99);
             var userRepository = this.mockUserRepository.Object;
             mockUserRepository.Setup(x => x.GetByIdAsync(It.IsAny<int>())).ReturnsAsync(user);
@@ -36,22 +34,6 @@
 
             Assert.NotNull(result);
             Assert.Equal(user.Id, result.Id);
-        }
-
-        private User GetUser()
-        {
-            var userType = fixture.Create<UserTypeEnum>();
-            var email = faker.Internet.Email();
-            return new User
-            {
-                Name = faker.Person.FullName,
-                Email = new Email(email),
-                Password = faker.Internet.Password(),
-                Type = userType,
-                Document = userType == UserTypeEnum.Common
-                    ? faker.Person.Cpf()
-                    : faker.Company.Cnpj()
-            };
         }
     }
 }
