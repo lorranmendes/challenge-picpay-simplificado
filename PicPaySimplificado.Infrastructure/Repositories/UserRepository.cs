@@ -7,5 +7,12 @@
         {
             this.context = context;
         }
+
+        public override async Task<User?> GetByIdAsync(int id)
+        {
+            return await context.Users
+                .Include(u => u.Wallet)
+                .FirstOrDefaultAsync(u => u.Id == id);
+        }
     }
 }

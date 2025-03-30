@@ -16,7 +16,7 @@
         public async Task<TEntity?> FindAsync(Expression<Func<TEntity, bool>> predicate) =>
             await context.Set<TEntity>().FirstOrDefaultAsync(predicate);
 
-        public async Task<TEntity?> GetByIdAsync(int id) => 
+        public virtual async Task<TEntity?> GetByIdAsync(int id) => 
             await context.Set<TEntity>().FindAsync(id);
 
         public void Update(TEntity entity) => 
