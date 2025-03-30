@@ -1,0 +1,1 @@
+﻿global using PicPaySimplificado.Infrastructure.IoC;
