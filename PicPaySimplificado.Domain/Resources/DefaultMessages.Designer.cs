@@ -61,6 +61,15 @@ namespace PicPaySimplificado.Domain.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} já está em uso..
+        /// </summary>
+        public static string AlreadyUsed {
+            get {
+                return ResourceManager.GetString("AlreadyUsed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a O valor precisa ser maior do que zero..
         /// </summary>
         public static string AmountMustBeGreaterThanZero {
