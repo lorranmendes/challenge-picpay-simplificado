@@ -4,6 +4,7 @@
     {
         private readonly Faker faker;
         private readonly Fixture fixture;
+        private const decimal InitialBalance = 100.00m;
         public UserFixture()
         {
             this.faker = new Faker();
@@ -14,16 +15,18 @@
         {
             var userType = fixture.Create<UserTypeEnum>();
             var email = faker.Internet.Email();
-            return new User
+            var user = new User
             {
                 Name = faker.Person.FullName,
                 Email = new Email(email),
                 Password = faker.Internet.Password(),
                 Type = userType,
                 Document = userType == UserTypeEnum.Common
-                ? faker.Person.Cpf()
+                    ? faker.Person.Cpf()
                     : faker.Company.Cnpj()
             };
+            user.Wallet = new Wallet(user.Id, InitialBalance);
+            return user;
         }
     }
 }
