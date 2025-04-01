@@ -4,3 +4,4 @@ global using PicPaySimplificado.Application.Interfaces;
 global using PicPaySimplificado.Domain.Exceptions;
 global using PicPaySimplificado.Domain.Interfaces;
 global using PicPaySimplificado.Domain.Resources;
+global using PicPaySimplificado.Domain.Enumerators;

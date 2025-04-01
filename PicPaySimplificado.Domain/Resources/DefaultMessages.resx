@@ -135,8 +135,14 @@
   <data name="InvalidType" xml:space="preserve">
     <value>{0} é um tipo inválido.</value>
   </data>
+  <data name="MerchantCantBeAPayer" xml:space="preserve">
+    <value>Lojista não pode fazer transferências.</value>
+  </data>
   <data name="MinimumLengthRequired" xml:space="preserve">
     <value>{0} deve ter no mínimo {1} caractere(s).</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>{0} não encontrado.</value>
   </data>
   <data name="RequiredField" xml:space="preserve">
     <value>{0} é um campo obrigatório.</value>

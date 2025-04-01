@@ -115,11 +115,29 @@ namespace PicPaySimplificado.Domain.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Lojista não pode fazer transferências..
+        /// </summary>
+        public static string MerchantCantBeAPayer {
+            get {
+                return ResourceManager.GetString("MerchantCantBeAPayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0} deve ter no mínimo {1} caractere(s)..
         /// </summary>
         public static string MinimumLengthRequired {
             get {
                 return ResourceManager.GetString("MinimumLengthRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} não encontrado..
+        /// </summary>
+        public static string NotFound {
+            get {
+                return ResourceManager.GetString("NotFound", resourceCulture);
             }
         }
         
