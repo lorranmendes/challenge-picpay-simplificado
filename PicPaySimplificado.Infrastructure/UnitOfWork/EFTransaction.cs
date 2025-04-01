@@ -9,5 +9,6 @@
         }
         public async Task CommitAsync() => await transaction.CommitAsync();
         public async Task RollbackAsync() => await transaction.RollbackAsync();
+        public async void Dispose() => await transaction.DisposeAsync();
     }
 }
