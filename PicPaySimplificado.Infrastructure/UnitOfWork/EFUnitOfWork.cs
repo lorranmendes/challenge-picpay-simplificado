@@ -15,5 +15,6 @@
         public ITransferRepository TransferRepository => transferRepository ?? new TransferRepository(context);
 
         public async Task<ITransaction> BeginTransactionAsync() => new EFTransaction(await context.Database.BeginTransactionAsync());
+        public async Task SaveChangesAsync() => await context.SaveChangesAsync();
     }
 }
