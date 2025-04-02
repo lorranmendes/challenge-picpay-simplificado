@@ -11,7 +11,7 @@
         }
 
         [Fact]
-        public async void AddAsync_WithValidData_ShouldReturnUser()
+        public async void AddAsync_WithValidData_ShouldCreateUserWithSuccess()
         {
             var user = userFixture.GetUser();
             var userRepository = this.mockUserRepository.Object;

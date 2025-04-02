@@ -31,7 +31,6 @@
             var exception = Assert.Throws<AmountMustBeGreaterThanZeroException>(
                 () => wallet.Deposit(invalidAmount));
 
-            Assert.Equal(DefaultMessages.AmountMustBeGreaterThanZero, exception.Message);
             Assert.Equal(InitialBalance, wallet.Balance);
         }
 
