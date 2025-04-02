@@ -2,6 +2,6 @@
 {
     public interface IAuthorizer
     {
-        public bool IsAuthorized();
+        public Task<bool> IsAuthorizedAsync();
     }
 }

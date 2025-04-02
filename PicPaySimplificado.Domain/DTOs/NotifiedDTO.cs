@@ -1,8 +1,4 @@
 ﻿namespace PicPaySimplificado.Domain.DTOs
 {
-    public class NotifiedDTO
-    {
-        public bool Notified { get; set; }
-        public string? Message { get; set; } 
-    }
+    public record NotifiedDTO (bool Notified, string? Message = null);
 }

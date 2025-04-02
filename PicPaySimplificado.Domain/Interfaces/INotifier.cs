@@ -2,6 +2,6 @@
 {
     public interface INotifier
     {
-        public NotifiedDTO Notify();
+        public Task<NotifiedDTO> NotifyAsync();
     }
 }
