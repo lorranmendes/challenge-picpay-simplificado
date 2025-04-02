@@ -8,3 +8,4 @@ global using PicPaySimplificado.Domain.AutoMapperProfile;
 global using PicPaySimplificado.Domain.Interfaces;
 global using PicPaySimplificado.Infrastructure.UnitOfWork;
 global using PicPaySimplificado.Infrastructure.Repositories;
+global using PicPaySimplificado.Infrastructure.Adapters;

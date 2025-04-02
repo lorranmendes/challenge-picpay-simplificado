@@ -70,15 +70,6 @@ namespace PicPaySimplificado.Domain.Resources {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a O valor precisa ser maior do que zero..
-        /// </summary>
-        public static string AmountMustBeGreaterThanZero {
-            get {
-                return ResourceManager.GetString("AmountMustBeGreaterThanZero", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Ocorreu um erro inesperado..
         /// </summary>
         public static string GenericError {
@@ -115,6 +106,15 @@ namespace PicPaySimplificado.Domain.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Lojista não pode fazer transferências..
+        /// </summary>
+        public static string MerchantCantBeAPayer {
+            get {
+                return ResourceManager.GetString("MerchantCantBeAPayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0} deve ter no mínimo {1} caractere(s)..
         /// </summary>
         public static string MinimumLengthRequired {
@@ -124,11 +124,29 @@ namespace PicPaySimplificado.Domain.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} não encontrado..
+        /// </summary>
+        public static string NotFound {
+            get {
+                return ResourceManager.GetString("NotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0} é um campo obrigatório..
         /// </summary>
         public static string RequiredField {
             get {
                 return ResourceManager.GetString("RequiredField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} deve ser maior que zero..
+        /// </summary>
+        public static string ValueMustBeGreaterThanZero {
+            get {
+                return ResourceManager.GetString("ValueMustBeGreaterThanZero", resourceCulture);
             }
         }
     }

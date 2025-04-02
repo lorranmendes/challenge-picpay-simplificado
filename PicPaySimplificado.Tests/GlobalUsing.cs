@@ -7,6 +7,7 @@ global using PicPaySimplificado.Domain.ValueObjects;
 global using PicPaySimplificado.Tests.Fixtures;
 global using PicPaySimplificado.Application.Interfaces;
 global using PicPaySimplificado.Application.Services;
+global using PicPaySimplificado.Domain.DTOs;
 global using System.Linq.Expressions;
 global using AutoFixture;
 global using Bogus;

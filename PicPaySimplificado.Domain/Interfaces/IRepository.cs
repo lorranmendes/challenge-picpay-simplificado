@@ -6,6 +6,5 @@
         public Task<TEntity?> GetByIdAsync(int id);
         public Task<TEntity?> FindAsync(Expression<Func<TEntity, bool>> predicate);
         public void Update(TEntity entity);
-        public Task SaveChangesAsync();
     }
 }

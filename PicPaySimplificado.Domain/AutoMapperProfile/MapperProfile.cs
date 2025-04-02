@@ -7,6 +7,9 @@
             CreateMap<UserNewDTO, User>()
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => new Email(src.Email)))
                 .ReverseMap();
+
+            CreateMap<TransferNewDTO, Transfer>()
+                .ReverseMap();
         }
     }
 }

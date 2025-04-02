@@ -16,6 +16,7 @@ builder.Services.AddScoped<GlobalExceptionHandlerMiddleware>();
 
 var app = builder.Build();
 app.AddUserEndpoints();
+app.AddTransferEndpoints();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
