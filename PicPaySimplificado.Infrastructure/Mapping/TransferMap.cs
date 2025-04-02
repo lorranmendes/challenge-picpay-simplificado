@@ -11,7 +11,7 @@
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.IdPayer);
             builder.Property(x => x.IdPayee);
-            builder.Property(x => x.Amount).HasColumnType("decimal(18,2)");
+            builder.Property(x => x.Value).HasColumnType("decimal(18,2)");
 
             builder.HasOne(x => x.Payer)
                 .WithMany()

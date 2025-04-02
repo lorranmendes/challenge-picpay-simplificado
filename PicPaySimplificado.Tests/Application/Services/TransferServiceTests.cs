@@ -28,13 +28,13 @@
             var payee = userFixture.GetUser();
             payee.Type = UserTypeEnum.Merchant;
             var transfer = new Transfer(payer.Id, payee.Id, amount);
-            var notifiedDTO = new NotifiedDTO { Notified = true };
+            var notifiedDTO = new NotifiedDTO(Notified: true);
             var transaction = new Mock<ITransaction>();
             mockUnitOfWork.Setup(x => x.BeginTransactionAsync()).ReturnsAsync(transaction.Object);
             mockUnitOfWork.Setup(x => x.UserRepository.GetByIdAsync(payer.Id)).ReturnsAsync(payer);
             mockUnitOfWork.Setup(x => x.TransferRepository.AddAsync(It.IsAny<Transfer>())).ReturnsAsync(transfer);
-            mockAuthorizer.Setup(x => x.IsAuthorized()).Returns(true);
-            mockNotifier.Setup(x => x.Notify()).Returns(notifiedDTO);
+            mockAuthorizer.Setup(x => x.IsAuthorizedAsync()).ReturnsAsync(true);
+            mockNotifier.Setup(x => x.NotifyAsync()).ReturnsAsync(notifiedDTO);
 
             var result = await transferService.AddAsync(transfer);
 
@@ -51,11 +51,11 @@
             var payee = userFixture.GetUser();
             payee.Type = UserTypeEnum.Common;
             var transfer = new Transfer(payer.Id, payee.Id, amount);
-            var notifiedDTO = new NotifiedDTO { Notified = true };
+            var notifiedDTO = new NotifiedDTO(Notified: true);
             mockUnitOfWork.Setup(x => x.UserRepository.GetByIdAsync(payer.Id)).ReturnsAsync(payer);
             mockUnitOfWork.Setup(x => x.TransferRepository.AddAsync(It.IsAny<Transfer>())).ReturnsAsync(transfer);
-            mockAuthorizer.Setup(x => x.IsAuthorized()).Returns(true);
-            mockNotifier.Setup(x => x.Notify()).Returns(notifiedDTO);
+            mockAuthorizer.Setup(x => x.IsAuthorizedAsync()).ReturnsAsync(true);
+            mockNotifier.Setup(x => x.NotifyAsync()).ReturnsAsync(notifiedDTO);
 
             await Assert.ThrowsAsync<MerchantUserCannotTransferException>(() => transferService.AddAsync(transfer));
         }
@@ -69,11 +69,11 @@
             payee.Type = UserTypeEnum.Merchant;
             decimal amount = payer.Wallet.Balance + fixture.Create<decimal>();
             var transfer = new Transfer(payer.Id, payee.Id, amount);
-            var notifiedDTO = new NotifiedDTO { Notified = true };
+            var notifiedDTO = new NotifiedDTO(Notified: true);
             mockUnitOfWork.Setup(x => x.UserRepository.GetByIdAsync(payer.Id)).ReturnsAsync(payer);
             mockUnitOfWork.Setup(x => x.TransferRepository.AddAsync(It.IsAny<Transfer>())).ReturnsAsync(transfer);
-            mockAuthorizer.Setup(x => x.IsAuthorized()).Returns(true);
-            mockNotifier.Setup(x => x.Notify()).Returns(notifiedDTO);
+            mockAuthorizer.Setup(x => x.IsAuthorizedAsync()).ReturnsAsync(true);
+            mockNotifier.Setup(x => x.NotifyAsync()).ReturnsAsync(notifiedDTO);
 
             await Assert.ThrowsAsync<InsufficientBalanceException>(() => transferService.AddAsync(transfer));
         }
@@ -87,11 +87,11 @@
             var payee = userFixture.GetUser();
             payee.Type = UserTypeEnum.Merchant;            
             var transfer = new Transfer(payer.Id, payee.Id, amount);
-            var notifiedDTO = new NotifiedDTO { Notified = true };
+            var notifiedDTO = new NotifiedDTO(Notified: true);
             mockUnitOfWork.Setup(x => x.UserRepository.GetByIdAsync(payer.Id)).ReturnsAsync(payer);
             mockUnitOfWork.Setup(x => x.TransferRepository.AddAsync(It.IsAny<Transfer>())).ReturnsAsync(transfer);
-            mockAuthorizer.Setup(x => x.IsAuthorized()).Returns(true);
-            mockNotifier.Setup(x => x.Notify()).Returns(notifiedDTO);
+            mockAuthorizer.Setup(x => x.IsAuthorizedAsync()).ReturnsAsync(true);
+            mockNotifier.Setup(x => x.NotifyAsync()).ReturnsAsync(notifiedDTO);
 
             await Assert.ThrowsAsync<AmountMustBeGreaterThanZeroException>(() => transferService.AddAsync(transfer));
         }
@@ -105,13 +105,13 @@
             var payee = userFixture.GetUser();
             payee.Type = UserTypeEnum.Merchant;
             var transfer = new Transfer(payer.Id, payee.Id, amount);
-            var notifiedDTO = new NotifiedDTO { Notified = true };
+            var notifiedDTO = new NotifiedDTO(Notified: true);
             var transaction = new Mock<ITransaction>();
             mockUnitOfWork.Setup(x => x.BeginTransactionAsync()).ReturnsAsync(transaction.Object);
             mockUnitOfWork.Setup(x => x.UserRepository.GetByIdAsync(payer.Id)).ReturnsAsync(payer);            
             mockUnitOfWork.Setup(x => x.TransferRepository.AddAsync(It.IsAny<Transfer>())).ReturnsAsync(transfer);
-            mockAuthorizer.Setup(x => x.IsAuthorized()).Returns(false);
-            mockNotifier.Setup(x => x.Notify()).Returns(notifiedDTO);
+            mockAuthorizer.Setup(x => x.IsAuthorizedAsync()).ReturnsAsync(false);
+            mockNotifier.Setup(x => x.NotifyAsync()).ReturnsAsync(notifiedDTO);
 
             await Assert.ThrowsAsync<NotAuthorizedException>(() => transferService.AddAsync(transfer));
         }
@@ -125,13 +125,13 @@
             var payee = userFixture.GetUser();
             payee.Type = UserTypeEnum.Merchant;
             var transfer = new Transfer(payer.Id, payee.Id, amount);
-            var notifiedDTO = new NotifiedDTO { Notified = false };
+            var notifiedDTO = new NotifiedDTO(Notified: false);
             var transaction = new Mock<ITransaction>();
             mockUnitOfWork.Setup(x => x.BeginTransactionAsync()).ReturnsAsync(transaction.Object);
             mockUnitOfWork.Setup(x => x.UserRepository.GetByIdAsync(payer.Id)).ReturnsAsync(payer);            
             mockUnitOfWork.Setup(x => x.TransferRepository.AddAsync(It.IsAny<Transfer>())).ReturnsAsync(transfer);
-            mockAuthorizer.Setup(x => x.IsAuthorized()).Returns(true);
-            mockNotifier.Setup(x => x.Notify()).Returns(notifiedDTO);
+            mockAuthorizer.Setup(x => x.IsAuthorizedAsync()).ReturnsAsync(true);
+            mockNotifier.Setup(x => x.NotifyAsync()).ReturnsAsync(notifiedDTO);
 
             await Assert.ThrowsAsync<NotifyServiceOfflineException>(() => transferService.AddAsync(transfer));
         }
