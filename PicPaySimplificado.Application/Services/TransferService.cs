@@ -20,7 +20,8 @@
             await ValidateUsersAsync(transfer);
             MakeTransfer(transfer);
 
-            if (!authorizer.IsAuthorized())
+            var authorized = await authorizer.IsAuthorizedAsync();
+            if (!authorized)
                 throw new NotAuthorizedException(DefaultMessages.GenericError);
 
             using var transaction = await unitOfWork.BeginTransactionAsync();
@@ -28,12 +29,13 @@
             {
                 unitOfWork.UserRepository.Update(transfer.Payer);
                 unitOfWork.UserRepository.Update(transfer.Payee);
-                await unitOfWork.TransferRepository.AddAsync(transfer);
+                await unitOfWork.TransferRepository.AddAsync(transfer);                
 
-                var notification = notifier.Notify();
+                var notification = await notifier.NotifyAsync();
                 if (!notification.Notified)
                     throw new NotifyServiceOfflineException(DefaultMessages.GenericError);
 
+                await unitOfWork.SaveChangesAsync();
                 await transaction.CommitAsync();
             }
             catch (Exception ex) 
@@ -47,8 +49,8 @@
 
         private void MakeTransfer(Transfer transfer)
         {
-            transfer.Payer.Wallet.Withdraw(transfer.Amount);
-            transfer.Payee.Wallet.Deposit(transfer.Amount);
+            transfer.Payer.Wallet.Withdraw(transfer.Value);
+            transfer.Payee.Wallet.Deposit(transfer.Value);
         }
 
         private async Task ValidateUsersAsync(Transfer transfer)

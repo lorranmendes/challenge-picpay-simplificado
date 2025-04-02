@@ -17,7 +17,7 @@
         public void Deposit(decimal amount)
         {
             if (amount <= 0)
-                throw new AmountMustBeGreaterThanZeroException(DefaultMessages.AmountMustBeGreaterThanZero);
+                throw new AmountMustBeGreaterThanZeroException(string.Format(DefaultMessages.ValueMustBeGreaterThanZero, "Valor"));
 
             Balance += amount;
         }

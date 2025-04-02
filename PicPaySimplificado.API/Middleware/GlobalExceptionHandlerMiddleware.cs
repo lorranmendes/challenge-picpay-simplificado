@@ -26,17 +26,25 @@
                     Instance = context.Request.Path
                 };
 
-                //if (!isKnowException)
-                    this.logger.LogError(ex.Message);
+                this.logger.LogError(ex.Message);
 
                 await context.Response.WriteAsJsonAsync(problemDetails);
             }
         }
 
-        private bool IsKnownException(Exception ex) => 
-            ex is AlreadyUsedException || 
-            ex is AmountMustBeGreaterThanZeroException || 
+        /// <summary>
+        /// Uma alternativa, em caso de crescimento do projeto, 
+        /// seria criar Exceptions específicas por camada de projeto e não por funcionalidade.
+        /// </summary>
+        private bool IsKnownException(Exception ex) =>
+            ex is AlreadyUsedException ||
+            ex is AmountMustBeGreaterThanZeroException ||
             ex is InsufficientBalanceException ||
-            ex is InvalidFormatException;
+            ex is InvalidFormatException ||
+            ex is MerchantUserCannotTransferException ||
+            ex is NotAuthorizedException ||
+            ex is NotFoundException ||
+            ex is NotifyServiceOfflineException ||
+            ex is RequestFailedException;
     }
 }
