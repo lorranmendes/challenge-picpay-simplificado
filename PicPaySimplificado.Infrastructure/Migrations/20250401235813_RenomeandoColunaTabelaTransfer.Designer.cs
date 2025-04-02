@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PicPaySimplificado.Infrastructure.Context;
 
@@ -11,9 +12,11 @@ using PicPaySimplificado.Infrastructure.Context;
 namespace PicPaySimplificado.Infrastructure.Migrations
 {
     [DbContext(typeof(PicPaySimplificadoContext))]
-    partial class PicPaySimplificadoContextModelSnapshot : ModelSnapshot
+    [Migration("20250401235813_RenomeandoColunaTabelaTransfer")]
+    partial class RenomeandoColunaTabelaTransfer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
