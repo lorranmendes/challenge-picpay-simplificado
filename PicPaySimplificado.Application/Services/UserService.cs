@@ -15,7 +15,7 @@
             user.Wallet ??= new Wallet(user.Id, InitialBalance);
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             await unitOfWork.UserRepository.AddAsync(user);
-            await unitOfWork.UserRepository.SaveChangesAsync();
+            await unitOfWork.SaveChangesAsync();
             return new Response<int>(user.Id);
         }
 
